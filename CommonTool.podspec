@@ -90,7 +90,7 @@ Pod::Spec.new do |spec|
   #  Not including the public_header_files will make all headers public.
   #
 
-  spec.source_files  = 'Sources/**/*.swift'
+  spec.source_files  = 'CommonTool/**/*.swift'
   # spec.exclude_files = "Classes/Exclude"
 
   # spec.public_header_files = "Classes/**/*.h"
@@ -141,6 +141,5 @@ Pod::Spec.new do |spec|
     spec.dependency "SwiftyUserDefaults", "~> 4.0.0"
     spec.dependency "Alamofire", "~> 5.5"
     spec.dependency "SwiftMessages", "~> 9.0.6"
-    spec.dependency "Firebase/Crashlytics"
-    spec.dependency "Firebase/Analytics"
+    
 end

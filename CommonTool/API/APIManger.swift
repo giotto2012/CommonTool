@@ -8,7 +8,6 @@
 
 import Foundation
 import Alamofire
-import FirebaseCrashlytics
 
 public protocol APIMangerProtocol
 {
@@ -243,7 +242,7 @@ open class APIManger  {
                 postErrorDic["code"] = "\(code ?? 0)"
                 postErrorDic["message"] = message ?? ""
                 
-                GoogleAnalyticsManager.sendEvent(name: "API_Error", parameters: postErrorDic)
+//                GoogleAnalyticsManager.sendEvent(name: "API_Error", parameters: postErrorDic)
 
                 
                 if statusCode == 403
@@ -264,7 +263,7 @@ open class APIManger  {
             else
             {
                 
-                GoogleAnalyticsManager.sendEvent(name: "API_Error", parameters: postErrorDic)
+//                GoogleAnalyticsManager.sendEvent(name: "API_Error", parameters: postErrorDic)
                 
                 if statusCode == 403
                 {

@@ -12,8 +12,6 @@ target 'CommonTool' do
 	pod 'Kingfisher', '~> 7.0'
 	pod 'NVActivityIndicatorView'
 	pod 'SwiftyUserDefaults', '~> 4.0.0'
-	pod 'Firebase/Crashlytics'
-	pod 'Firebase/Analytics'
 	pod 'Alamofire', '~> 5.5'
 	pod 'SwiftMessages'
 
