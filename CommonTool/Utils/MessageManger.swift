@@ -52,18 +52,11 @@ public class MessageManger:NSObject
         
         messageView.configureContent(title: title, body: message )
         
-        if let vc = viewController
-        {
-            var config = SwiftMessages.Config()
-            
-            config.presentationContext = .viewController(vc)
-            
-            SwiftMessages.show(config: config, view: messageView)
-        }
-        else
-        {
-            SwiftMessages.show(view: messageView)
-        }
+        var config = SwiftMessages.Config()
+        
+        config.presentationContext = .window(windowLevel: .statusBar)
+
+        SwiftMessages.show(config: config, view: messageView)
     }
     
     
@@ -73,18 +66,11 @@ public class MessageManger:NSObject
         
         messageView.configureContent(title: "", body: message)
         
-        if let vc = viewController
-        {
-            var config = SwiftMessages.Config()
-            
-            config.presentationContext = .viewController(vc)
-            
-            SwiftMessages.show(config: config, view: messageView)
-        }
-        else
-        {
-            SwiftMessages.show(view: messageView)
-        }
+        var config = SwiftMessages.Config()
+        
+        config.presentationContext = .window(windowLevel: .statusBar)
+
+        SwiftMessages.show(config: config, view: messageView)
         
         
     }
@@ -104,18 +90,11 @@ public class MessageManger:NSObject
         
         messageView.configureContent(title: "", body: message)
         
-        if let vc = viewController
-        {
-            var config = SwiftMessages.Config()
-            
-            config.presentationContext = .viewController(vc)
-            
-            SwiftMessages.show(config: config, view: messageView)
-        }
-        else
-        {
-            SwiftMessages.show(view: messageView)
-        }
+        var config = SwiftMessages.Config()
+        
+        config.presentationContext = .window(windowLevel: .statusBar)
+
+        SwiftMessages.show(config: config, view: messageView)
         
         
     }

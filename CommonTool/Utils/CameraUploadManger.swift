@@ -204,23 +204,25 @@ public class CameraUploadManger:NSObject
 }
 extension CameraUploadManger:UIImagePickerControllerDelegate,UINavigationControllerDelegate
 {
-    
-    public func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let selectedImage = info[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage
+    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         {
             
             if let jpgImageData = selectedImage.jpegData(compressionQuality: 0.2)
             {
                 self.selectImageDataFinish?(jpgImageData)
+                
+                delegate.dismiss(animated: true, completion: nil)
             }
-                       
             
-//            self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
         }
         
         delegate.dismiss(animated: true, completion: nil)
+        
     }
+    
+    
     
     public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         
