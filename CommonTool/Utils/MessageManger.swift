@@ -41,7 +41,6 @@ public class MessageManger:NSObject
         
         messageView.titleLabel?.isHidden = true
         
-        SwiftMessages.defaultConfig.presentationContext = .window(windowLevel: .statusBar)
 
         
         
