@@ -83,9 +83,7 @@ public class MessageManger:NSObject
         
         
         messageView.configureContent(title: "", body: message)
-        
-        var config = SwiftMessages.Config()
-        
+                
         SwiftMessages.show(view: messageView)
         
         

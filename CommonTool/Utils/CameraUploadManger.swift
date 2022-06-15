@@ -206,7 +206,7 @@ extension CameraUploadManger:UIImagePickerControllerDelegate,UINavigationControl
 {
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        if let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        if let selectedImage = info[.originalImage] as? UIImage
         {
             
             if let jpgImageData = selectedImage.jpegData(compressionQuality: 0.2)

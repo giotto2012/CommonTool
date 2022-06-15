@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol LivePickerViewDelegate: class {
+public protocol LivePickerViewDelegate {
     
     func selectIndex(index:NSInteger,indexPath:IndexPath?)
 }
