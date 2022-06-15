@@ -40,6 +40,8 @@ public class MessageManger:NSObject
         messageView.configureTheme(backgroundColor: .red, foregroundColor: .white)
         
         messageView.titleLabel?.isHidden = true
+        
+        SwiftMessages.defaultConfig.presentationContext = .window(windowLevel: .statusBar)
 
         
         
@@ -51,12 +53,8 @@ public class MessageManger:NSObject
         messageView.configureTheme(.error, iconStyle: .light)
         
         messageView.configureContent(title: title, body: message )
-        
-        var config = SwiftMessages.Config()
-        
-        config.presentationContext = .window(windowLevel: .statusBar)
-
-        SwiftMessages.show(config: config, view: messageView)
+                
+        SwiftMessages.show(view: messageView)
     }
     
     
@@ -65,12 +63,8 @@ public class MessageManger:NSObject
         messageView.configureTheme(.success, iconStyle: .light)
         
         messageView.configureContent(title: "", body: message)
-        
-        var config = SwiftMessages.Config()
-        
-        config.presentationContext = .window(windowLevel: .statusBar)
-
-        SwiftMessages.show(config: config, view: messageView)
+                
+        SwiftMessages.show(view: messageView)
         
         
     }
@@ -92,9 +86,7 @@ public class MessageManger:NSObject
         
         var config = SwiftMessages.Config()
         
-        config.presentationContext = .window(windowLevel: .statusBar)
-
-        SwiftMessages.show(config: config, view: messageView)
+        SwiftMessages.show(view: messageView)
         
         
     }
