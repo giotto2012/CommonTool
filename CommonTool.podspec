@@ -24,7 +24,7 @@ Pod::Spec.new do |spec|
   #   * Try to keep it short, snappy and to the point.
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
-  spec.description  = "常用工具"
+  spec.description  = "iOS常用工具"
                    
 
   spec.homepage     = "https://github.com/giotto2012/CommonTool"
@@ -90,7 +90,7 @@ Pod::Spec.new do |spec|
   #  Not including the public_header_files will make all headers public.
   #
 
-  spec.source_files  = "Classes", "Classes/**/*.{h,m}"
+  spec.source_files  = "CommonTool/Classes/*"
   # spec.exclude_files = "Classes/Exclude"
 
   # spec.public_header_files = "Classes/**/*.h"
@@ -132,6 +132,15 @@ Pod::Spec.new do |spec|
   # spec.requires_arc = true
 
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  # spec.dependency "JSONKit", "~> 1.4"
-
+    spec.dependency "KeychainAccess", "~> 4.2.2"
+    spec.dependency "SnapKit", "~> 5.6.0"
+    spec.dependency "Realm"
+    spec.dependency "RealmSwift", "~> 10.28.1"
+    spec.dependency "Kingfisher", "~> 7.0"
+    spec.dependency "NVActivityIndicatorView", "~> 5.1.1"
+    spec.dependency "SwiftyUserDefaults", "~> 4.0.0"
+    spec.dependency "Alamofire", "~> 5.5"
+    spec.dependency "SwiftMessages", "~> 9.0.6"
+    spec.dependency "Firebase/Crashlytics"
+    spec.dependency "Firebase/Analytics"
 end
