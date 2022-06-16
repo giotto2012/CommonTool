@@ -11,4 +11,4 @@ import Foundation
 public let LogoutNotificationKey = "com.CommonTool.LogoutNotificationKey"
 
 
-public let Defaults = UserDefaults.standard
+//public let Defaults = UserDefaults.standard

@@ -41,9 +41,6 @@ public class MessageManger:NSObject
         
         messageView.titleLabel?.isHidden = true
         
-
-        
-        
         super.init()
     }
     

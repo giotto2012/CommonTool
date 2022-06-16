@@ -12,8 +12,10 @@ import Alamofire
 public protocol APIMangerProtocol
 {
     func apiVersion() -> String
-    func generalError(code:Int)
+        
     func requestRefreshToken(success: @escaping ()->(),failure: @escaping (CustomError)->())
+    
+    func responseData(alamoReq: AlamofireRequestModal,response:AFDataResponse<Data>,success: @escaping (Data?) -> (), failure: @escaping (CustomError)->())
 }
 
 
@@ -147,8 +149,9 @@ open class APIManger  {
         manager.request(alamoReq.path, method:alamoReq.method, parameters:parameters,encoding:encoding,interceptor:handler)
             .validate(statusCode: 200...201)
             .responseData(emptyResponseCodes: [200, 204, 205],completionHandler: { [self] (response) in
-                                
-                responseData(alamoReq: alamoReq, response: response, success: success, failure: failure)
+                   
+                delegate?.responseData(alamoReq: alamoReq, response: response, success: success, failure: failure)
+                
                 
             })
     }
@@ -185,8 +188,8 @@ open class APIManger  {
             .validate(statusCode: 200...201)
             .responseData(completionHandler: { [self] (response) in
                 
-                responseData(alamoReq: alamoReq, response: response,success: success,failure: failure)
-                
+                delegate?.responseData(alamoReq: alamoReq, response: response, success: success, failure: failure)
+
                 
                 
             })
@@ -194,94 +197,7 @@ open class APIManger  {
            
     }
     
-    func responseData(alamoReq: AlamofireRequestModal,response:AFDataResponse<Data>,success: @escaping (Data?) -> (), failure: @escaping (CustomError)->())
-    {
-        switch response.result{
-            
-        case .success:
-            
-            let utf8Text = String(data: response.value!, encoding: .utf8)
-            
-            print("Success Response:\(utf8Text ?? ""))")
-            
-            success(response.value)
-                        
-        case .failure(let error):
-                                
-                               
-            let statusCode = response.response?.statusCode
-            let locolerrorCode = error._code
-            
-            var postErrorDic:[String:Any] = [:]
-            
-            postErrorDic["locol_code"] = "\(locolerrorCode)"
-            postErrorDic["status_code"] = "\(statusCode ?? 0)"
-            postErrorDic["url"] = response.request?.url?.absoluteString
 
-            print("statusCode:\(statusCode ?? 404)")
-            
-            if let data = response.data
-            {
-                let utf8Text = String(data: data, encoding: .utf8)
-                
-                print("Fail Response:\(utf8Text ?? ""))")
-
-                let backToString = String(data: data, encoding: .utf8)
-
-                print(backToString ?? "ERROR")
-                
-                let errorDic = APIManger.self.dataToDic(data: data)
-                
-                let message = errorDic?["message"] as? String
-                
-                let result = errorDic?["result"]
-
-                let code = errorDic?["code"] as? Int
-                
-                
-                postErrorDic["code"] = "\(code ?? 0)"
-                postErrorDic["message"] = message ?? ""
-                
-//                GoogleAnalyticsManager.sendEvent(name: "API_Error", parameters: postErrorDic)
-
-                
-                if statusCode == 403
-                {
-                    APIManger.logout()
-                }
-                else
-                {
-                    self.delegate?.generalError(code: code ?? 0)
-                    
-                    let err = CustomError(errorCode: code, message: message ?? "", error: error as NSError, statusCode: statusCode ?? 0,result: result)
-                                        
-                    failure(err)
-
-                }
-                
-            }
-            else
-            {
-                
-//                GoogleAnalyticsManager.sendEvent(name: "API_Error", parameters: postErrorDic)
-                
-                if statusCode == 403
-                {
-                    APIManger.logout()
-                }
-                else
-                {
-                    failure(CustomError(code: statusCode ?? 0))
-                }
-                
-            }
-            
-            
-            break
-            
-        }
-    }
-    
     public class func callWebServiceAlamofire(_ alamoReq: AlamofireRequestModal,success: @escaping (Data?) -> (), failure: @escaping (CustomError)->())
     {
         
@@ -356,7 +272,7 @@ open class APIManger  {
               
         print(delegate?.apiVersion() ?? "No!")
         
-        let token = ""
+        let token = KeychainManger.getValue(key:KeychainManger.keychainTokenKey) ?? ""
 
         headers["Authorization"] = "Bearer \(token)"
         

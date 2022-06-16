@@ -11,6 +11,7 @@ import SwiftyUserDefaults
 
 extension DefaultsKeys {
         
-    static let userLanguage = DefaultsKey<String?>("UserLanguage")
-    static let newAppVersion = DefaultsKey<Int?>("NewAppVersion")
+    var userLanguage: DefaultsKey<String?> { .init("UserLanguage") }
+    var newAppVersion: DefaultsKey<Int?> { .init("NewAppVersion") }
+    var isNotFirstRun: DefaultsKey<Bool?> { .init("FBhelperFirstRun") }
 }

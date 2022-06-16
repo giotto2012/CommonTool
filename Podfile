@@ -11,7 +11,7 @@ target 'CommonTool' do
 	pod 'RealmSwift'
 	pod 'Kingfisher', '~> 7.0'
 	pod 'NVActivityIndicatorView'
-	pod 'SwiftyUserDefaults', '~> 4.0.0'
+	pod 'SwiftyUserDefaults'
 	pod 'Alamofire', '~> 5.5'
 	pod 'SwiftMessages'
 

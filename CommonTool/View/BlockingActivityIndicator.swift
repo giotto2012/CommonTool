@@ -35,23 +35,30 @@ final class BlockingActivityIndicator: UIView {
   }
 }
 
-extension UIWindow {
-  func startBlockingActivityIndicator() {
-    guard !subviews.contains(where: { $0 is BlockingActivityIndicator }) else {
+extension UIViewController {
+  public func startBlockingActivityIndicator() {
+      guard !self.view.subviews.contains(where: { $0 is BlockingActivityIndicator }) else {
       return
     }
 
     let activityIndicator = BlockingActivityIndicator()
     activityIndicator.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-    activityIndicator.frame = bounds
+      activityIndicator.frame = view.bounds
 
     UIView.transition(
-      with: self,
+        with: self.view,
       duration: 0.3,
       options: .transitionCrossDissolve,
       animations: {
-        self.addSubview(activityIndicator)
+          self.view.addSubview(activityIndicator)
       }
     )
   }
+    
+public func finishBlockingActivityIndicator()
+{
+    view.subviews.filter { $0 is BlockingActivityIndicator }.forEach { view in
+        view.removeFromSuperview()
+    }
+}
 }

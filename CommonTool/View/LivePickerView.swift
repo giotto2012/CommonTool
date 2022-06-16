@@ -19,7 +19,12 @@ public class LivePickerView: UIView,UIPickerViewDelegate,UIPickerViewDataSource 
     @IBOutlet weak public var selectPickerView: UIPickerView!
 
     
-    public var dataArray = ["","","","",""]
+    public var dataArray:[String] = [] {
+        
+        didSet {
+            selectPickerView.reloadAllComponents()
+        }
+    }
     
     public var delegate:LivePickerViewDelegate?
     

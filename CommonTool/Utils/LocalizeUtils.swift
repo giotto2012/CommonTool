@@ -47,7 +47,7 @@ extension LanguageProtocol
             code = "zh-Hant-TW"
         }
         
-        Defaults[.userLanguage] = code
+        Defaults[\.userLanguage] = code
        
     }
 }
@@ -82,7 +82,7 @@ open class LocalizeUtils {
     
     public func _localized(withKey key: String,bundle:Bundle = BundleManager.bundle()) -> String {
         
-        let localizationFileNmae:String? = Defaults[.userLanguage]
+        let localizationFileNmae:String? = Defaults[\.userLanguage]
         
         if localizationFileNmae?.count ?? 0 > 0
         {
@@ -113,7 +113,7 @@ open class LocalizeUtils {
     
     public class func apiHaderKey() -> String
     {
-        let localizationFileNmae:String? = Defaults[.userLanguage]
+        let localizationFileNmae:String? = Defaults[\.userLanguage]
         
         if let localizationFileNmae = localizationFileNmae
         {
@@ -146,7 +146,7 @@ open class LocalizeUtils {
     
     public func settingUserLanguageCode() {
         
-        let localizationFileNmae:String? = UserDefaults.standard.string(forKey: "UserLanguage")
+        let localizationFileNmae:String? = Defaults[\.userLanguage]
         
         guard localizationFileNmae == nil else{
             
@@ -190,7 +190,7 @@ open class LocalizeUtils {
             code = "zh-Hant-TW"
         }
         
-        Defaults[.userLanguage] = code
+        Defaults[\.userLanguage] = code
 
         
     }
