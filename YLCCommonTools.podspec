@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "YLCCommonTools"
-  spec.version      = "0.0.2"
+  spec.version      = "0.0.3"
   spec.summary      = "常用工具"
 
   # This description is used to generate tags and improve search results.
@@ -80,7 +80,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.source       = { :git => "https://github.com/giotto2012/CommonTool", :tag => spec.version }
-
+  spec.swift_version = '4.2'
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #

@@ -7,7 +7,7 @@
 
 import Foundation
 
-func LocalString(key:String) -> String
+public func LocalString(key:String) -> String
 {
     let string = LocalizeUtils.sharedInstance()._localized(withKey: key)
     
